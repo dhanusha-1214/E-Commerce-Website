@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>My Orders - MyShop</title>
+  <link rel="stylesheet" href="style.css"/>
+  <style>
+    .orders-container {
+      max-width: 800px;
+      margin: 40px auto;
+      background: #fff;
+      padding: 20px;
+      border-radius: 8px;
+    }
+    .order {
+      border: 1px solid #ccc;
+      padding: 15px;
+      margin-bottom: 20px;
+      border-radius: 5px;
+    }
+    .order h3 {
+      margin-bottom: 10px;
+    }
+    .order-items {
+      list-style: none;
+      padding: 0;
+    }
+    .order-items li {
+      margin-bottom: 5px;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="container nav-container">
+      <div class="logo">Smart Shop</div>
+      <nav>
+        <ul class="nav-links">
+          <li><a href="home.html">Home</a></li>
+          <li><a href="electronics.html">Electronics</a></li>
+          <li><a href="fashion.html">Fashion</a></li>
+          <li><a href="grocery.html">Grocery</a></li>
+        </ul>
+      </nav>
+      <div class="nav-right">
+        <input type="text" placeholder="Search for products..."/>
+        <button id="cart-btn">Cart (<span id="cart-count">0</span>)</button>
+        <div class="user-dropdown">
+          <button class="user-btn">Account ▼</button>
+          <div class="dropdown-content">
+            <a href="login.html">Login</a>
+            <a href="register.html">Register</a>
+            <a href="orders.html">Orders</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+  <div class="orders-container">
+    <h2>My Orders</h2>
+    <div id="orders-list"></div>
+  </div>
+
+  <script>
+    const ordersList = document.getElementById("orders-list");
+    const user = JSON.parse(localStorage.getItem("user"));
+    const orders = JSON.parse(localStorage.getItem("orders")) || [];
+
+    if (!user) {
+      ordersList.innerHTML = "<p>Please login to see your orders.</p>";
+    } else {
+      const userOrders = orders.filter(o => o.userEmail === user.email);
+
+      if (userOrders.length === 0) {
+        ordersList.innerHTML = "<p>No orders found.</p>";
+      } else {
+        userOrders.forEach((order, index) => {
+          const orderDiv = document.createElement("div");
+          orderDiv.classList.add("order");
+
+          orderDiv.innerHTML = `
+            <h3>Order #${index + 1} - ${order.date}</h3>
+            <ul class="order-items">
+              ${order.items.map(item => `<li>${item.name} x ${item.qty} - $${(item.price * item.qty).toFixed(2)}</li>`).join("")}
+            </ul>
+          `;
+
+          ordersList.appendChild(orderDiv);
+        });
+      }
+    }
+  </script>
+
+</body>
+</html>

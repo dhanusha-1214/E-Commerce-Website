@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Smart Shop</title>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+
+  <!-- ===== Header / Navbar ===== -->
+  <header>
+    <div class="container nav-container">
+      <div class="logo">Smart Shop</div>
+      <nav>
+        <ul class="nav-links">
+          <li><a href="home.html">Home</a></li>
+          <li><a href="electronics.html">Electronics</a></li>
+          <li><a href="fashion.html">Fashion</a></li>
+          <li><a href="grocery.html">Grocery</a></li>
+        </ul>
+      </nav>
+      <div class="nav-right">
+        <input type="text" placeholder="Search for products..."/>
+        <button id="cart-btn">Cart (<span id="cart-count">0</span>)</button>
+        <div class="user-dropdown">
+          <button class="user-btn">Account ▼</button>
+          <div class="dropdown-content">
+            <a href="login.html">Login</a>
+            <a href="register.html">Register</a>
+            <a href="orders.html">Orders</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ===== Hero Section ===== -->
+  <section class="hero">
+    <div class="container">
+      <h1>Welcome to Smart Shop</h1>
+      <p>Shop the best products at amazing prices</p>
+      <button class="hero-btn">Shop Now</button>
+    </div>
+  </section>
+
+  <!-- ===== Featured Products ===== -->
+  <main class="container">
+    <h2>Featured Products</h2>
+    <div class="product-grid" id="product-grid">
+      <!-- JS will inject products -->
+    </div>
+  </main>
+  <!-- ===== Cart Modal ===== -->
+  <div class="cart-modal" id="cart-modal">
+    <div class="cart-content">
+      <h2>Your Cart</h2>
+      <ul id="cart-items"></ul>
+      <button id="close-cart">Close</button>
+    </div>
+  </div>
+
+  <!-- ===== Footer ===== -->
+  <footer>
+    <div class="container footer-container">
+      <div class="footer-col">
+        <h4>Smart Shop</h4>
+        <p>Your one-stop shop for all your needs.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Categories</h4>
+        <ul>
+          <li><a href="electronics.html">Electronics</a></li>
+          <li><a href="fashion.html">Fashion</a></li>
+          <li><a href="grocery.html">Grocery</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Help</h4>
+        <ul>
+          <li><a href="#">Contact Us</a></li>
+          <li><a href="#">Returns</a></li>
+          <li><a href="#">FAQs</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <p>Email: support@myshop.com</p>
+        <p>Phone: +123 456 7890</p>
+        <p>Address: 123 Market Street, City</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2025 MyShop. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
